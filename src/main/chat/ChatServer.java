@@ -1,9 +1,8 @@
 package main.chat;
 import java.net.*;
-import java.security.KeyStore.Entry;
 import java.io.*;
 import java.util.HashMap;
-import java.util.Iterator;
+
 
 public class ChatServer implements Runnable{
 	protected static HashMap<String, Socket> clientList = new HashMap<>();	
@@ -11,6 +10,7 @@ public class ChatServer implements Runnable{
 	private ServerSocket serverSocket = null;
 	private Socket socket = null;
 	private PrintStream ps = null;
+	private PrintStream ps1;
 	private boolean status = true;
 	
 	public static void main(String[] args) throws Exception{
@@ -59,6 +59,8 @@ public class ChatServer implements Runnable{
 //					sock.close();
 //					}
 				for(Socket sock: clientList.values()){
+					ps1 = new PrintStream(socket.getOutputStream());
+					ps1.print("Server is Offline..!Please restart application and try again later..!!! ");
 					sock.close();
 				}
 				serverSocket.close();				

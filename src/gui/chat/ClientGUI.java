@@ -1,29 +1,11 @@
-//ChatClientGUI
+//GUI for ChatClient
 package gui.chat;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
-import java.awt.Color;
-import java.awt.Component;
-import javax.swing.Box;
-import java.awt.Font;
-import javax.swing.JTextArea;
-import java.awt.SystemColor;
-import java.awt.TextArea;
-
-import javax.swing.JTextField;
-
 import main.chat.ChatClient;
-
-import javax.swing.JButton;
+import java.awt.*;
+import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Window.Type;
 
 public class ClientGUI {
 
@@ -49,7 +31,7 @@ public class ClientGUI {
 				try {
 					ClientGUI window = new ClientGUI();
 					window.frmChatClient.setVisible(true);
-					client = new ChatClient();
+					client = new ChatClient(window);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -107,7 +89,7 @@ public class ClientGUI {
 		btnSend = new JButton("Send");
 		btnSend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(!sendMsg.getText().equals("")){System.out.println("In Send Action");
+				if(!sendMsg.getText().equals("")){
 					client.sendMessage(sendMsg.getText());
 				}
 			}
@@ -119,7 +101,7 @@ public class ClientGUI {
 		
 		txtLogin = new JTextField();
 		txtLogin.setToolTipText("Enter Login Name");
-		txtLogin.setBounds(128, 326, 317, 20);
+		txtLogin.setBounds(128, 326, 254, 20);
 		frmChatClient.getContentPane().add(txtLogin);
 		txtLogin.setColumns(10);
 		
@@ -143,7 +125,7 @@ public class ClientGUI {
 				}
 			}			
 		});
-		btnLogin.setBounds(455, 325, 89, 23);
+		btnLogin.setBounds(392, 325, 71, 23);
 		frmChatClient.getContentPane().add(btnLogin);
 		
 		JLabel lblTypeMessage = new JLabel("Type Message");
@@ -161,6 +143,10 @@ public class ClientGUI {
 		lblExistingLogin.setBounds(184, 305, 199, 14);
 		lblExistingLogin.setVisible(false);
 		frmChatClient.getContentPane().add(lblExistingLogin);
+		
+		JButton btnLogout = new JButton("Logout");
+		btnLogout.setBounds(473, 325, 71, 23);
+		frmChatClient.getContentPane().add(btnLogout);
 	}
 	public void displayMessage(String msg){
 		incomingMsg.append(msg+"\n");
