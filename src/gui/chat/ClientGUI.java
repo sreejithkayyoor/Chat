@@ -1,3 +1,4 @@
+//ChatClientGUI
 package gui.chat;
 
 import java.awt.EventQueue;
