@@ -1,1 +1,2 @@
-Client started after sometime of another client starts chating doen't checked for login.
+# bugReport
+New client connects to server after sometime of initial connections doenot need login(doesnot checks HasMap).
